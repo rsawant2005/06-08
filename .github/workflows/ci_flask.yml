@@ -10,10 +10,10 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - uses: action/checkout@v6
+        - uses: actions/checkout@v6
         
         - name: setting up python in our runner
-          uses: action/setup-python@v6
+          uses: actions/setup-python@v6
           with:
              python-version: '3.13'
 
