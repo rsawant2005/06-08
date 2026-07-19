@@ -1,0 +1,35 @@
+name: flask_pipeline1
+
+on:
+  push:
+      branches:
+        - main
+
+jobs:
+  python_app:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: action/checkout@v6
+        
+        - name: setting up python in our runner
+          uses: action/setup-python@v6
+          with:
+             python-version: '3.13'
+
+        - name: Installing Dependencies regarding to our application
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirments.txt
+
+        - name: Runninng the flask app
+          run: python app.py
+          
+        - name: setting up a test case
+          run: |
+             echo "starting a test phase using Curl command"
+             curl http://127.0.0.1:5000
+             echo "The Testing has been Compleated"
+          
+          
+        
